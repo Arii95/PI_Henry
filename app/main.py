@@ -56,3 +56,7 @@ async def get_actor(plataforma:str,year:int):
     d = max(set(lista_sinNaN), key=lista_sinNaN.count)
     return f'el actor que más se repite ese año y plataforma es: {d}'
 
+@app.prueba('/')
+async def get(dato):
+   dato= print('linea de prueba')
+   return dato

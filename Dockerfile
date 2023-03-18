@@ -1,4 +1,4 @@
-FROM docker pull tiangolo/uvicorn-gunicorn-fastapi
+FROM tiangolo/uvicorn-gunicorn-fastapi
 
 RUN pip3 install fastapi
 

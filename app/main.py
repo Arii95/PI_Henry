@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 import pandas as pd
 
+
 app= FastAPI()
 
 @app.on_event('startup')
@@ -29,34 +30,40 @@ async def get_max_duration(year:int, plataforma:str,duration:str):
 #Obtener la cantidad de películas por encima de determinado score, dada la plataforma y el año 
 @app.get("/get_score_count/{plataforma}/{scored}/{year}")
 async def get_score_count(plataforma:str, scored:int, year:int):
-    rslt_df = df.loc[(df_pr['release_year'] == year) &
+    rslt_df = df_pr.loc[(df_pr['release_year'] == year) &
               (df_pr['plataforma']==plataforma) & (df_pr['rating_y']> scored)]
+    print(type(rslt_df))
     b= rslt_df['id'].count()
     return f'la cantidad de peliculas arriba del score en la plataforma es: {b}'
 
 #Obtener la cantidad de peliculas dada la plataforma, 
-@app.get("get_count_platform/{plataforma}")
+@app.get("/get_count_platform/{plataforma}")
 async def get_count_plataform(plataforma:str):
+    #print(plataforma)
     rslt_df = df_pr.loc[(df_pr['plataforma']==plataforma)]
-    c= rslt_df['id'].count()
-    return f'la cantidad de peliculas en la plataforma es: {c}'
+    #resultado= pd.DataFrame(rslt_df)
+    #c= rslt_df['id'].()
+    #print(type(c))
+    return rslt_df.shape[0]
 
 
 #Obtener el actor que más se repite dada la plataforma y el año 
 @app.get("/get_actor/{plataforma}/{year}")
 async def get_actor(plataforma:str,year:int):
+    df_pr['cast'].fillna(' ',inplace= True)
     rslt_df = df_pr.loc[(df_pr['release_year'] == year) & (df_pr['plataforma']==plataforma)]
     tolist= list(rslt_df['cast'].str.split(', '))
+    print(tolist)
     lista_completa = []
-    for lista in tolist:
-      for elemento in lista:
-        lista_completa.append(elemento)
+    for listas in tolist:
+        for elemento in listas:
+            lista_completa.append(elemento)
     elemento_mas_comun = max(set(lista_completa), key = lista_completa.count)
     lista_sinNaN = [elem for elem in lista_completa if elem != elemento_mas_comun]
     d = max(set(lista_sinNaN), key=lista_sinNaN.count)
     return f'el actor que más se repite ese año y plataforma es: {d}'
 
-@app.prueba('/')
-async def get(dato):
-   dato= print('linea de prueba')
-   return dato
+#@app.prueba('/')
+#async def get(dato):
+#   dato= print('linea de prueba')
+#   return dato

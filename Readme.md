@@ -2,7 +2,7 @@
 
 <br/>
 
-![imagen ilustrativa](cartoon.avif)
+![imagen ilustrativa](/imagenes/cartoon.avif)
 
 Para este proyecto se establecieron varias metas con la finalidad de proponer un modelo de Machine Learning en el cual se pudieran observar recomendaciones de películas para cada usuario almacenado en la base de datos. 
 
@@ -138,11 +138,13 @@ disney |1450
 
 Para la creación del modelo de Machine Learning se optó por  concatenar la base de datos de reviews, y sacar un promedio de score por cada clase de rating que puntuaba cada usuario para poder predecir si una pelicula o serie, que cayera en la categoría con alta preferencia o baja preferencia, le gustará o no a ese usuario. 
 
+Se uso el modelado de K-vecinos tomando como variables predictoras el número de usuario y el score que le puso a cada clasificación de rating.
+
 Con 50 vecinos se obtuvo un accuracy  de 0.63 
 
 
 
-![imagen](pelis.jpeg)
+![imagen](imagenes/pelis.jpeg)
 
 
 

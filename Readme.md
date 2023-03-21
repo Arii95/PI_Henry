@@ -134,3 +134,12 @@ disney |1450
 
 # __Modelo de Machine Learning__
 
+<br/>
+
+Para la creación del modelo de Machine Learning se optó por  concatenar la base de datos de reviews, y sacar un promedio de score por cada clase de rating que puntuaba cada usuario para poder predecir si una pelicula o serie, que cayera en la categoría con alta preferencia o baja preferencia, le gustará o no a ese usuario. 
+
+Con 50 vecinos se obtuvo un accuracy  de 0.63 
+
+
+
+

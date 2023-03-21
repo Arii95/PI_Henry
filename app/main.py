@@ -22,7 +22,7 @@ async def get_max_duration(year:int, plataforma:str,duration:str):
     max_value=int(rslt_df['duration_int'].max())
     fila_max_valor = rslt_df.loc[rslt_df['duration_int'].eq(max_value)]
     a= fila_max_valor['title'].values
-    return {'resultado':a[0]}
+    return {'resultado':a}
 
 
 #Obtener la cantidad de películas por encima de determinado score, dada la plataforma y el año 

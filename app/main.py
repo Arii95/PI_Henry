@@ -22,7 +22,7 @@ async def get_max_duration(year:int, plataforma:str,duration:str):
     max_value=int(rslt_df['duration_int'].max())
     fila_max_valor = rslt_df.loc[rslt_df['duration_int'].eq(max_value)]
     a= fila_max_valor['title'].values
-    return {'resultado':a}
+    return {'resultado':a[0]}
 
 
 #Obtener la cantidad de películas por encima de determinado score, dada la plataforma y el año 
@@ -30,7 +30,6 @@ async def get_max_duration(year:int, plataforma:str,duration:str):
 async def get_score_count(plataforma:str, scored:int, year:int):
     rslt_df = df_pr.loc[(df_pr['Year'] == year) &
               (df_pr['plataforma']==plataforma) & (df_pr['rating_y']> scored)]
-    print(type(rslt_df))
     b= rslt_df['id'].count()
     return {'resultado':b}
 

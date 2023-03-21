@@ -142,4 +142,7 @@ Con 50 vecinos se obtuvo un accuracy  de 0.63
 
 
 
+![imagen](pelis.jpeg)
+
+
 
